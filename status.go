@@ -168,7 +168,11 @@ func parseUtsname(u unix.Utsname) string {
 }
 
 func jsonRequested(r *http.Request) bool {
-	return strings.Contains(strings.ToLower(r.Header.Get("Content-type")), "application/json")
+	log.Println(r.Header)
+	res := strings.Contains(strings.ToLower(r.Header.Get("Content-type")), "application/json")
+	log.Println(strings.ToLower(r.Header.Get("Content-type")))
+	log.Println(res)
+	return res
 }
 
 func initStatus(services []*service) {
